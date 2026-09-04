@@ -6,8 +6,8 @@
 
 <p align="center">
   <strong>A simple NFC card wallet and emulation app for Android.</strong>
+  [Download NexTap v1.0.0](../../releases/latest)
 </p>
-[Download NexTap v1.0.0 Android](../../releases/latest)
 
 ## About
 
