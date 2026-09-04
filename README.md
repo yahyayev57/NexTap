@@ -7,6 +7,7 @@
 <p align="center">
   <strong>A simple NFC card wallet and emulation app for Android.</strong>
 </p>
+[Download NexTap v1.0.0 Android](../../releases/latest)
 
 ## About
 
@@ -23,7 +24,6 @@ NexTap is a minimalist NFC card wallet built with **.NET MAUI** and **C#**. It l
 </p>
 
 ## Installation
-[Download NexTap v1.0.0](../../releases/latest)
 ### Requirements
 
 - Android device with NFC for NFC features
