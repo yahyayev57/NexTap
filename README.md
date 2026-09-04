@@ -7,7 +7,8 @@
 <p align="center">
   <strong>A simple NFC card wallet and emulation app for Android.</strong>
   <br>
-  <a href="https://github.com/yahyayev57/NexTap/releases/latest">Download NexTap v1.0.0</a>
+  <br>
+  <a href="https://github.com/yahyayev57/NexTap/releases/latest">Download NexTap v1.0.0 Android</a>
 </p>
 
 ## About
