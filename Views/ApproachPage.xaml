@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NexTap.ViewModels"
+             xmlns:controls="clr-namespace:NexTap.Controls"
+             x:Class="NexTap.Views.ApproachPage"
+             x:DataType="vm:ApproachViewModel">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="24,20,24,28" RowSpacing="16">
+
+        <Label Grid.Row="0" Text="{Binding Card.Name}" Style="{StaticResource TitleLabel}"
+               FontSize="22" HorizontalOptions="Start" VerticalOptions="Start" />
+
+        <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" Spacing="28">
+            <controls:PulseRingsView x:Name="Pulse" />
+            <Label Text="{Binding StatusText}" Style="{StaticResource SubtitleLabel}" HorizontalOptions="Center" FontSize="16" />
+        </VerticalStackLayout>
+
+        <Button Grid.Row="2" Text="CANCEL" Style="{StaticResource GhostButton}"
+                HorizontalOptions="Center"
+                Command="{Binding CancelCommand}" />
+
+    </Grid>
+</ContentPage>

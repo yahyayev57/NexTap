@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NexTap.ViewModels"
+             xmlns:models="clr-namespace:NexTap.Models"
+             x:Class="NexTap.Views.AddEditCardPage"
+             x:DataType="vm:AddEditCardViewModel">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,*,Auto" Padding="24,20,24,28" RowSpacing="20">
+
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0" Text="{Binding IsEditing, Converter={StaticResource BoolToStringConverter}, ConverterParameter='Edit card|Add card'}"
+                       Style="{StaticResource TitleLabel}" VerticalOptions="Center" />
+                <Button Grid.Column="1" Text="✕" Style="{StaticResource GhostButton}"
+                        WidthRequest="44" HeightRequest="40" Padding="0" FontSize="16"
+                        Command="{Binding CancelCommand}" />
+            </Grid>
+
+            <VerticalStackLayout Grid.Row="1" Spacing="24">
+
+                <!--  Name  -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Card name" Style="{StaticResource SubtitleLabel}" />
+                    <Border Style="{StaticResource SoftCard}" Padding="16,4" HeightRequest="56">
+                        <Entry Placeholder="e.g. Front Door" Text="{Binding Name}" VerticalOptions="Center" />
+                    </Border>
+                </VerticalStackLayout>
+
+                <!--  Plain color picker  -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Card color" Style="{StaticResource SubtitleLabel}" />
+                    <CollectionView ItemsSource="{Binding Covers}" SelectionMode="Single"
+                                    SelectedItem="{Binding SelectedCover}"
+                                    HeightRequest="58"
+                                    HorizontalScrollBarVisibility="Never">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:CardCover">
+                                <Border WidthRequest="48" HeightRequest="48"
+                                        StrokeShape="RoundRectangle 23"
+                                        StrokeThickness="3"
+                                        BackgroundColor="{Binding ., Converter={StaticResource CoverToColorConverter}}">
+                                    <Border.Stroke>
+                                        <SolidColorBrush Color="Transparent" />
+                                    </Border.Stroke>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Stroke" Value="Transparent" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Stroke" Value="{StaticResource AccentGold}" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <!--  Physical card link  -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Physical card" Style="{StaticResource SubtitleLabel}" />
+                    <Border Style="{StaticResource SoftCard}" Padding="16">
+                        <VerticalStackLayout Spacing="12">
+                            <Label Text="{Binding ScanStatus}" FontSize="14" />
+                            <Button Style="{StaticResource GhostButton}" HeightRequest="44"
+                                    Text="Scan card"
+                                    Command="{Binding ScanCommand}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+            <Button Grid.Row="2" Text="SAVE CARD" Style="{StaticResource PrimaryButton}"
+                    Command="{Binding SaveCommand}" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

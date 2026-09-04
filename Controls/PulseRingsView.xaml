@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="NexTap.Controls.PulseRingsView"
+      WidthRequest="220" HeightRequest="220"
+      HorizontalOptions="Center" VerticalOptions="Center">
+
+    <!--  Three concentric soft rings that scale + fade outward on a loop, like a
+          radar/NFC pulse. Purely native shapes + Animation API - no image assets. -->
+
+    <Ellipse x:Name="RingOuter"
+             Fill="Transparent"
+             Stroke="{StaticResource PastelBlue}"
+             StrokeThickness="2"
+             WidthRequest="220" HeightRequest="220"
+             Opacity="0" />
+
+    <Ellipse x:Name="RingMiddle"
+             Fill="Transparent"
+             Stroke="{StaticResource PastelBlue}"
+             StrokeThickness="2"
+             WidthRequest="220" HeightRequest="220"
+             Opacity="0" />
+
+    <Ellipse x:Name="RingInner"
+             Fill="Transparent"
+             Stroke="{StaticResource PastelBlue}"
+             StrokeThickness="2"
+             WidthRequest="220" HeightRequest="220"
+             Opacity="0" />
+
+    <!--  Static core - the "phone" at the center of the pulse  -->
+    <Border WidthRequest="104" HeightRequest="104"
+            StrokeShape="RoundRectangle 32"
+            Stroke="{StaticResource BorderSoft}"
+            StrokeThickness="1"
+            BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceCard}, Dark={StaticResource SurfaceCardDark}}">
+        <Border.Shadow>
+            <Shadow Brush="{StaticResource Black}" Opacity="0.08" Radius="18" Offset="0,8" />
+        </Border.Shadow>
+        <!--  Simple drawn phone silhouette instead of an icon font  -->
+        <Border WidthRequest="40" HeightRequest="60"
+                StrokeShape="RoundRectangle 8"
+                Stroke="{StaticResource AccentGold}"
+                StrokeThickness="2.5"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Center" VerticalOptions="Center">
+            <BoxView WidthRequest="14" HeightRequest="2.5"
+                     CornerRadius="2"
+                     Color="{StaticResource AccentGold}"
+                     HorizontalOptions="Center" VerticalOptions="End"
+                     Margin="0,0,0,7" />
+        </Border>
+    </Border>
+
+</Grid>

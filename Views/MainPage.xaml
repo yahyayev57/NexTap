@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NexTap.ViewModels"
+             xmlns:models="clr-namespace:NexTap.Models"
+             x:Class="NexTap.Views.MainPage"
+             x:DataType="vm:WalletViewModel">
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Padding="24,20,24,28" RowSpacing="8">
+
+        <!--  Header  -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <Label Grid.Column="0" Text="My Wallet" Style="{StaticResource TitleLabel}" VerticalOptions="Center" />
+            <Button Grid.Column="1" Text="Edit" Style="{StaticResource GhostButton}"
+                    HeightRequest="40" FontSize="14"
+                    Command="{Binding ManageCommand}" />
+        </Grid>
+
+        <!--  Card list  -->
+        <Grid Grid.Row="1">
+            <!--  Empty state  -->
+            <VerticalStackLayout IsVisible="{Binding HasCards, Converter={StaticResource InvertedBoolConverter}}"
+                                  VerticalOptions="Center" Spacing="8">
+                <Label Text="No cards yet" Style="{StaticResource TitleLabel}" FontSize="20" HorizontalOptions="Center" />
+                <Label Text="Tap Edit above to add your first card" Style="{StaticResource SubtitleLabel}" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <CollectionView ItemsSource="{Binding Cards}"
+                             SelectionMode="Single"
+                             SelectedItem="{Binding SelectedCard}"
+                             IsVisible="{Binding HasCards}"
+                             VerticalOptions="Start"
+                             Margin="0,4,0,0">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="14" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:NfcCardModel">
+                        <Border HeightRequest="150"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 24"
+                                BackgroundColor="{Binding Cover, Converter={StaticResource CoverToColorConverter}}"
+                                Padding="20,16">
+                            <Label Text="{Binding Name}"
+                                   FontSize="21"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"
+                                   LineBreakMode="TailTruncation" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!--  Use card CTA  -->
+        <Button Grid.Row="2" Text="USE CARD" Style="{StaticResource PrimaryButton}"
+                Command="{Binding UseSelectedCardCommand}" />
+
+        <Label Grid.Row="3" Text="Made by Kenan Y."
+               TextColor="White"
+               FontSize="12"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Opacity="0.9" />
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">NexTap</string>
+	<string name="nextap_hce_description">NexTap card</string>
+	<string name="nextap_hce_ndef_description">NexTap link tag</string>
+</resources>

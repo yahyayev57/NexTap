@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--  Gray-pastel base palette  -->
+    <Color x:Key="BgSoft">#F1F1F4</Color>
+    <Color x:Key="BgSoftDark">#1C1C1F</Color>
+
+    <Color x:Key="SurfaceCard">#FFFFFF</Color>
+    <Color x:Key="SurfaceCardDark">#2A2A2E</Color>
+
+    <Color x:Key="SurfaceMuted">#E4E4E9</Color>
+    <Color x:Key="SurfaceMutedDark">#333338</Color>
+
+    <Color x:Key="TextPrimary">#2E2E33</Color>
+    <Color x:Key="TextPrimaryDark">#F1F1F4</Color>
+
+    <Color x:Key="TextSecondary">#8A8A93</Color>
+    <Color x:Key="TextSecondaryDark">#A5A5AD</Color>
+
+    <Color x:Key="BorderSoft">#DCDCE2</Color>
+    <Color x:Key="BorderSoftDark">#3D3D42</Color>
+
+    <!--  Plain card colors  -->
+    <Color x:Key="CardBlue">#2563EB</Color>
+    <Color x:Key="CardPurple">#7C3AED</Color>
+    <Color x:Key="CardEmerald">#059669</Color>
+    <Color x:Key="CardOrange">#EA580C</Color>
+    <Color x:Key="CardCrimson">#DC2626</Color>
+    <Color x:Key="CardMidnight">#172033</Color>
+
+    <!-- Legacy colors kept for compatibility with older resources. -->
+    <Color x:Key="PastelLavender">#C9C9E8</Color>
+    <Color x:Key="PastelSage">#C7DACB</Color>
+    <Color x:Key="PastelSand">#E7DCC9</Color>
+    <Color x:Key="PastelBlue">#C6D6E4</Color>
+    <Color x:Key="PastelRose">#E6CFD3</Color>
+
+    <!--  Single warm accent, echoes the success-tick gold  -->
+    <Color x:Key="AccentGold">#F0B93B</Color>
+    <Color x:Key="AccentGoldSoft">#FBE6BC</Color>
+
+    <Color x:Key="Danger">#D97C7C</Color>
+
+    <Color x:Key="White">#FFFFFF</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="Transparent">Transparent</Color>
+
+</ResourceDictionary>

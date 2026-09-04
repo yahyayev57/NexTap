@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AbsoluteLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="NexTap.Controls.CheckmarkView"
+                WidthRequest="160" HeightRequest="160"
+                HorizontalOptions="Center" VerticalOptions="Center">
+
+    <!--  Gold circle - bounces in first  -->
+    <Ellipse x:Name="Circle"
+             Fill="{StaticResource AccentGold}"
+             AbsoluteLayout.LayoutBounds="0.5,0.5,140,140"
+             AbsoluteLayout.LayoutFlags="PositionProportional"
+             Scale="0" AnchorX="0.5" AnchorY="0.5">
+        <Ellipse.Shadow>
+            <Shadow Brush="{StaticResource AccentGold}" Opacity="0.35" Radius="24" Offset="0,10" />
+        </Ellipse.Shadow>
+    </Ellipse>
+
+    <!--  Checkmark short stroke: roughly (48,88) -> (66,106), i.e. the downward flick  -->
+    <BoxView x:Name="StrokeShort"
+             Color="{StaticResource White}"
+             CornerRadius="5"
+             AbsoluteLayout.LayoutBounds="48,84,26,10"
+             AbsoluteLayout.LayoutFlags="None"
+             Rotation="45" AnchorX="0" AnchorY="0.5"
+             ScaleX="0" />
+
+    <!--  Checkmark long stroke: roughly (64,104) -> (112,56), the upward sweep  -->
+    <BoxView x:Name="StrokeLong"
+             Color="{StaticResource White}"
+             CornerRadius="5"
+             AbsoluteLayout.LayoutBounds="64,99,68,10"
+             AbsoluteLayout.LayoutFlags="None"
+             Rotation="-48" AnchorX="0" AnchorY="0.5"
+             ScaleX="0" />
+
+</AbsoluteLayout>

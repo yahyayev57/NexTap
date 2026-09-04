@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NexTap.ViewModels"
+             xmlns:models="clr-namespace:NexTap.Models"
+             x:Class="NexTap.Views.ManageCardsPage"
+             x:Name="RootPage"
+             x:DataType="vm:ManageCardsViewModel">
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Padding="24,20,24,28" RowSpacing="8">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <Label Grid.Column="0" Text="My Wallet" Style="{StaticResource TitleLabel}" VerticalOptions="Center" />
+            <Button Grid.Column="1" Text="Done" Style="{StaticResource GhostButton}"
+                    HeightRequest="40" FontSize="14"
+                    Command="{Binding CloseCommand}" />
+        </Grid>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Cards}" VerticalOptions="Start">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="14" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:NfcCardModel">
+                    <Border HeightRequest="150"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 24"
+                            BackgroundColor="{Binding Cover, Converter={StaticResource CoverToColorConverter}}"
+                            Padding="20,16">
+                        <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,Auto" RowSpacing="8">
+                            <Label Grid.Row="0" Grid.ColumnSpan="2"
+                                   Text="{Binding Name}"
+                                   FontSize="21"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"
+                                   LineBreakMode="TailTruncation" />
+                            <Button Grid.Row="1" Grid.Column="0" Text="Edit"
+                                    Style="{StaticResource GhostButton}"
+                                    HeightRequest="38" FontSize="13" Padding="14,0"
+                                    BackgroundColor="#40FFFFFF"
+                                    TextColor="White"
+                                    Command="{Binding BindingContext.EditCardCommand, Source={x:Reference RootPage}}"
+                                    CommandParameter="{Binding .}" />
+                            <Button Grid.Row="1" Grid.Column="1" Text="Delete"
+                                    Style="{StaticResource GhostButton}"
+                                    HeightRequest="38" FontSize="13" Padding="14,0"
+                                    BackgroundColor="#40FFFFFF"
+                                    TextColor="White"
+                                    Command="{Binding BindingContext.DeleteCardCommand, Source={x:Reference RootPage}}"
+                                    CommandParameter="{Binding .}" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2" Text="ADD CARD" Style="{StaticResource PrimaryButton}"
+                Command="{Binding AddCardCommand}" />
+
+        <Label Grid.Row="3" Text="Made by Kenan Y."
+               TextColor="White"
+               FontSize="12"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Opacity="0.9" />
+
+    </Grid>
+</ContentPage>

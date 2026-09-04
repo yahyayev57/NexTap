@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round"
+		android:supportsRtl="true">
+		<!--
+			NexTapHostApduService (Platforms/Android/NexTapHostApduService.cs) is
+			registered automatically at build time via its [Service]/[IntentFilter]/
+			[MetaData] attributes - no manual <service> entry needed here.
+		-->
+	</application>
+
+	<uses-permission android:name="android.permission.NFC" />
+
+	<!--
+		required="false": the app still opens on devices without NFC so
+		Kenan can build/test the UI on an emulator, it just can't scan/emulate.
+	-->
+	<uses-feature android:name="android.hardware.nfc" android:required="false" />
+	<uses-feature android:name="android.hardware.nfc.hce" android:required="false" />
+</manifest>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Declares the AID (Application Identifier) groups NexTap responds to when
+	presented to a reader.
+
+	F0010203040506 is a placeholder/demo AID for raw-UID "badge" cards -
+	replace it with the AID your target access reader actually expects, or
+	the reader will never route the APDU exchange to this app at all.
+
+	D2760000850101 is NOT ours to change - it's the NFC Forum's registered
+	AID for the standard Type 4 Tag NDEF Application. Every phone's stock
+	NFC stack already knows how to select this AID and read an NDEF file
+	from it, exactly like tapping a physical URL sticker. Answering on this
+	AID (see NexTapHostApduService) is what lets "website link" cards open
+	directly on a second phone without that phone needing NexTap installed.
+-->
+<host-apdu-service xmlns:android="http://schemas.android.com/apk/res/android"
+	android:description="@string/nextap_hce_description"
+	android:requireDeviceUnlock="false">
+	<aid-group android:description="@string/nextap_hce_description" android:category="other">
+		<aid-filter android:name="F0010203040506" />
+	</aid-group>
+	<aid-group android:description="@string/nextap_hce_ndef_description" android:category="other">
+		<aid-filter android:name="D2760000850101" />
+	</aid-group>
+</host-apdu-service>
